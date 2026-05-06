@@ -1,0 +1,153 @@
+        :root {
+            --js-yellow: #f7df1e;
+            --dark-bg: #1e1e1e;
+            --text-color: #333;
+            --light-gray: #f4f4f9;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Contenedor Principal */
+        .cover {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            min-height: 100vh;
+            gap: 20px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Columna Izquierda */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 20px;
+            border-right: 2px solid var(--js-yellow);
+        }
+
+        .checkpoint {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .checkpoint_tittle {
+            font-family: 'Ubuntu Condensed', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--js-yellow);
+        }
+
+        /* Columna Central */
+        .center-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .banner-image {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .banner-image img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            /* Fallback en caso de que no cargue la imagen */
+            background: var(--js-yellow);
+        }
+
+        /* Espacio para el Logo si no hay imagen */
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: var(--js-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 3rem;
+            border-radius: 12px;
+            margin: 0 auto 20px;
+        }
+
+        /* Enlaces */
+        .link-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-link {
+            width: 100%;
+        }
+
+        .nav-link a {
+            display: block;
+            padding: 15px 20px;
+            background-color: var(--light-gray);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Ubuntu Condensed', sans-serif;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border-left: 5px solid transparent;
+        }
+
+        .nav-link a:hover {
+            background-color: var(--dark-bg);
+            color: var(--js-yellow);
+            border-left: 5px solid var(--js-yellow);
+            transform: translateX(10px);
+        }
+
+        /* Columna Derecha */
+        .right-column {
+            padding: 20px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 992px) {
+            .cover {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .left-column {
+                border-right: none;
+                border-bottom: 2px solid var(--js-yellow);
+                padding-bottom: 20px;
+            }
+
+            .center-column {
+                padding: 20px;
+            }
+        }
+
+        /* Utilidades */
+        .name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }

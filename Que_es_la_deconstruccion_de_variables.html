@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¿Qué es la deconstrucción de variables?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Qué es la deconstrucción de variables?</h1>
+    <p>Checkpoint 8 - Limpieza de Código y Asignación Eficiente</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>Introducción</h2>
+        <p>
+            La desestructuración es una expresión de JavaScript que permite "desempacar" valores de arreglos (Arrays) o propiedades de objetos en variables distintas, de una forma mucho más rápida y limpia.
+        </p>
+
+        <!-- Recuadro para el diagrama -->
+        <div class="image-placeholder-box">
+            <img src="../images/diagrama_deconstruccion_1.png" alt="Diagrama de Desestructuración" onerror="this.style.display='none'">
+            <p style="color: #666; font-style: italic;">[Diagrama: De un objeto/array hacia múltiples variables individuales]</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>¿Para qué se utiliza?</h2>
+        <p>
+            Imagina que recibes un paquete (un objeto) con muchas cosas dentro. Sin la desestructuración, tendrías que sacar cada cosa una por una y ponerle una etiqueta. Con la desestructuración, abres la caja y todas las cosas se colocan en sus estantes correspondientes automáticamente.
+        </p>
+    </section>
+
+    <section>
+        <h2>1. Desestructuración de Objetos</h2>
+        <p>Es la más común. Nos permite extraer propiedades de un objeto usando su nombre de clave.</p>
+        
+        <h3>Sin desestructuración (Forma antigua):</h3>
+        <pre><code>const usuario = { nombre: "Ana", edad: 28, ciudad: "Madrid" };
+
+const nombre = usuario.nombre;
+const edad = usuario.edad;
+
+console.log(nombre); // "Ana"</code></pre>
+
+        <h3>Con desestructuración (Forma moderna):</h3>
+        <p>Extraemos las propiedades directamente en una sola línea. <strong>Importante:</strong> El nombre de la variable debe coincidir con el nombre de la propiedad del objeto.</p>
+        <pre><code>const usuario = { nombre: "Ana", edad: 28, ciudad: "Madrid" };
+
+// ¡Magia! Extraemos nombre y edad en un solo paso
+const { nombre, edad } = usuario;
+
+console.log(nombre); // "Ana"
+console.log(edad);   // 28</code></pre>
+    </section>
+
+    <section>
+        <h2>2. Desestructuración de Arreglos (Arrays)</h2>
+        <p>En los arreglos, como no hay nombres de propiedad, la desestructuración se basa en la posición (el orden).</p>
+        <pre><code>const colores = ["Rojo", "Verde", "Azul"];
+
+// Asignamos según el orden: primero a 'c1', segundo a 'c2'
+const [c1, c2] = colores;
+
+console.log(c1); // "Rojo"
+console.log(c2); // "Verde"</code></pre>
+    </section>
+
+    <section>
+        <h2>3. ¿Por qué es tan importante para un desarrollador?</h2>
+        <ul>
+            <li><strong>Código Limpio (Clean Code):</strong> Evitas repetir <code>objeto.propiedad</code> una y otra vez.</li>
+            <li><strong>Parámetros de Funciones:</strong> Es muy común usarla al recibir datos en una función.
+                <pre><code>function saludar({ nombre }) {
+    console.log("Hola " + nombre);
+}</code></pre>
+            </li>
+            <li><strong>Valores por Defecto:</strong> Puedes asignar un valor en caso de que la propiedad no exista.
+                <pre><code>const { tema = "oscuro" } = configuracionUsuario;</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="warning-box" style="background-color: #fce4ec; border-left: 5px solid #d81b60; padding: 20px; border-radius: 8px;">
+            <h3>⚠️ Riesgos y Errores Comunes</h3>
+            <p><strong>Valores null o undefined:</strong> Si intentas desestructurar algo que no existe (ej: <code>const { x } = undefined</code>), el programa lanzará un error y se detendrá.</p>
+            <p><strong>Confusión de nombres:</strong> En objetos, si escribes mal el nombre de la variable, la misma quedará como <code>undefined</code>.</p>
+        </div>
+    </section>
+
+    <div class="glossary">
+        <h3>Diccionario de Términos (Glosario)</h3>
+        <ul>
+            <li><strong>Desestructuración:</strong> Sintaxis de JS que permite extraer datos de arrays u objetos en variables distintas.</li>
+            <li><strong>Propiedad:</strong> Una asociación entre un nombre (o clave) y un valor dentro de un objeto.</li>
+            <li><strong>Asignación por posición:</strong> Método de extraer valores de un array basándose únicamente en su orden (0, 1, 2...).</li>
+            <li><strong>Valor por defecto:</strong> Un valor que se asigna automáticamente a una variable si la propiedad extraída no existe o es <code>undefined</code>.</li>
+            <li><strong>Desempaquetar:</strong> El proceso técnico de separar estructuras de datos complejas en partes más simples.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¿Qué tipo de bucles hay en JS?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Qué tipo de bucles hay en JS?</h1>
+    <p>Checkpoint 8 - Conceptos Fundamentales</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>¿Qué son los bucles?</h2>
+        <h3>Introducción a la Iteración</h3>
+        <p>
+            En el desarrollo de software, la capacidad de ejecutar tareas repetitivas de forma automatizada es lo que separa a un programa útil de un simple script. Los bucles, o <strong>loops</strong>, son estructuras de control que permiten que un bloque de código se ejecute de manera recurrente. Esta capacidad se rige bajo el principio <strong>DRY (Don't Repeat Yourself)</strong>, que busca evitar la duplicación de lógica innecesaria.
+        </p>
+        <p>
+            Desde una perspectiva de hardware, los bucles aprovechan los ciclos de reloj de la CPU para procesar grandes volúmenes de datos con una cantidad mínima de instrucciones. Delegamos en la computadora la tarea de aplicar una lógica mientras una condición sea verdadera.
+        </p>
+    </section>
+
+    <section>
+        <h2>¿Para qué sirven realmente?</h2>
+        <p>JavaScript ofrece diversas herramientas para iterar según el escenario:</p>
+        <ul>
+            <li><strong>for:</strong> Control total. Ideal cuando sabemos el número exacto de vueltas.</li>
+            <li><strong>while:</strong> El centinela. Ideal cuando dependemos de una condición externa.</li>
+            <li><strong>do...while:</strong> Acción garantizada. Se ejecuta al menos una vez.</li>
+            <li><strong>for...of / for...in:</strong> Modernos y legibles para colecciones de datos.</li>
+        </ul>
+    </section>
+
+    <section class="warning-box">
+        <h3>⚠️ El Lado Oscuro: Riesgos</h3>
+        <p><strong>1. Bucle Infinito:</strong> Ocurre si la condición de parada nunca se alcanza. El navegador se congela.</p>
+        <p><strong>2. Rendimiento:</strong> Bucles mal optimizados sobre millones de datos pueden ralentizar la app.</p>
+        <p><strong>3. Modificación de datos:</strong> Evita modificar la lista que estás recorriendo para prevenir errores lógicos.</p>
+    </section>
+
+    <section>
+        <h2>Tipos de Bucles al Detalle</h2>
+
+        <h3>1. El Bucle for</h3>
+        <p>Es el estándar. Se compone de inicialización, condición y actualización.</p>
+        <pre><code>for (let i = 1; i <= 5; i++) {
+    console.log("Número: " + i);
+}</code></pre>
+
+        <h3>2. El Bucle while</h3>
+        <p>Se ejecuta mientras la condición sea verdadera.</p>
+        <pre><code>let stock = 3;
+while (stock > 0) {
+    console.log("Vendiendo producto...");
+    stock--;
+}</code></pre>
+
+        <h3>3. El Bucle do...while</h3>
+        <p>Garantiza una ejecución antes de evaluar la condición.</p>
+        <pre><code>let password;
+do {
+    password = prompt("Introduce la clave:");
+} while (password !== "1234");</code></pre>
+
+        <h3>4. for...of y for...in</h3>
+        <p>Extraen valores o propiedades directamente.</p>
+        <pre><code>// for...of para Arrays
+const frutas = ["🍎", "🍌", "🥝"];
+for (let fruta of frutas) {
+    console.log(fruta);
+}
+
+// for...in para Objetos
+const user = { name: "Alex", age: 25 };
+for (let key in user) {
+    console.log(key + ": " + user[key]);
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>Tabla Comparativa</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bucle</th>
+                    <th>Uso Principal</th>
+                    <th>¿Ejecuta siempre?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>for</strong></td>
+                    <td>Contar o recorrer con índice</td>
+                    <td>Solo si cumple condición</td>
+                </tr>
+                <tr>
+                    <td><strong>while</strong></td>
+                    <td>Depende de condición externa</td>
+                    <td>Solo si cumple condición</td>
+                </tr>
+                <tr>
+                    <td><strong>do...while</strong></td>
+                    <td>Validación de entradas</td>
+                    <td>Sí, al menos una vez</td>
+                </tr>
+                <tr>
+                    <td><strong>for...of</strong></td>
+                    <td>Arrays y listas</td>
+                    <td>Solo si hay elementos</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="glossary">
+        <h3>Diccionario de Términos (Glosario)</h3>
+        <ul>
+            <li><strong>Iteración:</strong> El acto de repetir un proceso. Cada repetición en un bucle es una iteración.</li>
+            <li><strong>DRY (Don't Repeat Yourself):</strong> Filosofía de programación que busca reducir la repetición de información.</li>
+            <li><strong>Contador:</strong> Variable que aumenta o disminuye para controlar el número de vueltas de un bucle.</li>
+            <li><strong>Booleano:</strong> Tipo de dato que solo puede ser verdadero (true) o falso (false).</li>
+            <li><strong>Índice:</strong> La posición numérica de un elemento dentro de una lista (comienza en 0).</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

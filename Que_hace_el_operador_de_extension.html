@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¿Qué hace el operador de extensión en JS?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Qué hace el operador de extensión en JS?</h1>
+    <p>Checkpoint 8 - Manipulación de Datos e Inmutabilidad</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>1. ¿Qué es el Operador de Extensión?</h2>
+        <p>
+            Se representa con tres puntos consecutivos (<code>...</code>). Su función principal es "expandir" o "desparramar" los elementos de un contenedor (como un Array o un Objeto) para que puedan ser utilizados de forma individual.
+        </p>
+
+        <!-- Recuadro para el diagrama -->
+        <div class="image-placeholder-box">
+            <img src="../images/operador_extension.png" alt="Diagrama del Operador de Extensión" onerror="this.style.display='none'">
+            <p style="color: #666; font-style: italic;">[Descomponiendo Arrays y Objetos]</p>
+        </div>
+
+        <p>
+            <strong>¿Para qué se utiliza?</strong><br>
+            Imagina que tienes una caja de piezas de LEGO (un Array). El operador de extensión es como volcar la caja sobre la mesa: ahora tienes todas las piezas sueltas y listas para combinarlas con otras o usarlas por separado.
+        </p>
+    </section>
+
+    <section>
+        <h2>1. Usos Principales con Ejemplos</h2>
+        
+        <h3>A. Copiar Arreglos y Objetos (Sin "vincularlos")</h3>
+        <p>En JavaScript, si haces <code>listaB = listaA</code>, creas una referencia, no una copia. El operador de extensión rompe ese vínculo.</p>
+        <pre><code>const original = [1, 2, 3];
+const copia = [...original]; // Crea una copia independiente
+
+copia.push(4);
+console.log(original); // [1, 2, 3] (Sigue igual)
+console.log(copia);    // [1, 2, 3, 4]</code></pre>
+
+        <h3>B. Combinar (Concatenar) Datos</h3>
+        <p>Es la forma más elegante de unir información de diferentes fuentes.</p>
+        <pre><code>const basicos = ["rojo", "verde"];
+const extra = ["azul", "amarillo"];
+
+const todosLosColores = [...basicos, ...extra, "negro"];
+console.log(todosLosColores); // ["rojo", "verde", "azul", "amarillo", "negro"]</code></pre>
+
+        <h3>C. Expandir Objetos</h3>
+        <p>Muy útil para actualizar datos sin borrar los anteriores (sobrescribiendo propiedades específicas).</p>
+        <pre><code>const usuario = { nombre: "Luis", edad: 30 };
+const usuarioActualizado = { ...usuario, ciudad: "Bilbao", edad: 31 };
+
+console.log(usuarioActualizado); 
+// { nombre: "Luis", edad: 31, ciudad: "Bilbao" } -> La edad se sobrescribió</code></pre>
+    </section>
+
+    <section>
+        <h2>2. Diferencia Crucial: Spread vs. Rest</h2>
+        <p>Ambos usan <code>...</code>, pero funcionan en sentidos opuestos:</p>
+        <ul>
+            <li><strong>Spread (Extensión):</strong> Saca los elementos de una caja (vuelca la caja).</li>
+            <li><strong>Rest (Resto):</strong> Recoge elementos sueltos y los mete en una caja. Se usa en parámetros de funciones.</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="warning-box" style="background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 20px; border-radius: 8px;">
+            <h3>⚠️ Riesgos y Consideraciones</h3>
+            <p><strong>Copia Superficial (Shallow Copy):</strong> Solo copia el primer nivel. Si tienes objetos anidados, la copia profunda seguirá vinculada por referencia.</p>
+            <p><strong>Orden de escritura:</strong> En los objetos, el orden importa. Las propiedades declaradas después del operador <code>...</code> sobrescribirán a las del original.</p>
+        </div>
+    </section>
+
+    <div class="glossary">
+        <h3>Diccionario de Términos (Glosario)</h3>
+        <ul>
+            <li><strong>Operador Spread:</strong> Sintaxis que permite expandir iterables (como arrays) en lugares donde se esperan múltiples elementos.</li>
+            <li><strong>Referencia:</strong> Dirección de memoria donde se guarda un objeto; copiarla no crea un objeto nuevo, sino un acceso al mismo.</li>
+            <li><strong>Concatenación:</strong> La operación de unir dos o más estructuras de datos en una sola.</li>
+            <li><strong>Shallow Copy (Copia Superficial):</strong> Una copia que solo duplica la estructura de nivel superior, manteniendo referencias para objetos internos.</li>
+            <li><strong>Inmutabilidad:</strong> Práctica de no modificar los datos originales, sino crear copias actualizadas de los mismos.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

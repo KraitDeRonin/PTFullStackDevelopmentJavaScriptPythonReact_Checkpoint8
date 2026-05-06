@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¿Qué es una función de flecha?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Qué es una función de flecha?</h1>
+    <p>Checkpoint 8 - Sintaxis Moderna y Contexto de Ejecución</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>1. ¿Qué es una Función de Flecha?</h2>
+        <p>
+            Una función de flecha es una forma compacta y moderna de escribir funciones en JavaScript. Se llaman así por su sintaxis, que utiliza un símbolo que parece una flecha: <code>=></code>.
+        </p>
+        <p>
+            <strong>¿Para qué se utilizan?</strong><br>
+            Se utilizan principalmente para simplificar el código. Son ideales cuando necesitamos funciones cortas que se pasan como argumentos a otras funciones (como en <code>map</code>, <code>filter</code> o eventos).
+        </p>
+    </section>
+
+    <section>
+        <h2>2. Anatomía y Sintaxis</h2>
+        <p>Comparemos la estructura clásica con la moderna:</p>
+        
+        <h3>Función Tradicional</h3>
+        <pre><code>const sumar = function(a, b) {
+    return a + b;
+}</code></pre>
+
+        <h3>Función de Flecha</h3>
+        <pre><code>const sumarFlecha = (a, b) => {
+    return a + b;
+}</code></pre>
+
+        <h3>La magia del "Retorno Implícito"</h3>
+        <p>Si la función solo tiene una línea, podemos eliminar las llaves <code>{}</code> y la palabra <code>return</code>.</p>
+        <pre><code>const saludar = nombre => "Hola, " + nombre;</code></pre>
+    </section>
+
+    <section>
+        <h2>3. Diferencias Clave (Por qué usarlas)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Función tradicional</th>
+                    <th>Función de Flecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Sintaxis</strong></td>
+                    <td>Larga y verbosa</td>
+                    <td>Corta y elegante</td>
+                </tr>
+                <tr>
+                    <td><strong>Palabra this</strong></td>
+                    <td>Tiene su propio <code>this</code></td>
+                    <td>Hereda el <code>this</code> del entorno</td>
+                </tr>
+                <tr>
+                    <td><strong>Hoisting</strong></td>
+                    <td>SÍ (declaraciones)</td>
+                    <td>NO (actúa como variable)</td>
+                </tr>
+                <tr>
+                    <td><strong>Parámetros</strong></td>
+                    <td>Requiere <code>()</code> siempre</td>
+                    <td><code>()</code> opcionales si es solo uno</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>4. El Gran Beneficio: El valor de this</h2>
+        <p>
+            Las <strong>Arrow Functions</strong> no tienen su propio <code>this</code>. Ellas "miran hacia afuera" y usan el contexto del lugar donde fueron creadas. Esto las hace perfectas para trabajar dentro de objetos o clases sin perder la referencia al objeto original.
+        </p>
+    </section>
+
+    <section>
+        <h2>5. ¿Cuándo NO usarlas?</h2>
+        <ul>
+            <li>No las uses como métodos de objetos si necesitas acceder a otras propiedades mediante <code>this</code>.</li>
+            <li>No tienen el objeto <code>arguments</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ejemplo Práctico: Resumen total</h2>
+        <pre><code>// Tradicional
+const precioFinalTradicional = function(precio) {
+    return precio * 1.21;
+}
+
+// Flecha (Mucho más limpia)
+const precioFinalFlecha = precio => precio * 1.21;
+
+console.log(precioFinalFlecha(100)); // Resultado: 121</code></pre>
+    </section>
+
+    <!-- Recuadro  imagen -->
+    <div class="image-placeholder-box">
+        <img src="../images/diagrama_arrow_1.png" alt="Diagrama de Funciones de Flecha" onerror="this.style.display='none'">
+        <p style="color: #666; font-style: italic;">Representación visual de la sintaxis Arrow Function</p>
+    </div>
+
+    <div class="glossary">
+        <h3>Diccionario de Términos (Glosario)</h3>
+        <ul>
+            <li><strong>Arrow Function:</strong> Sintaxis introducida en ES6 para escribir expresiones de funciones de forma más corta.</li>
+            <li><strong>Retorno Implícito:</strong> Característica de las funciones de flecha de una sola línea que devuelven el resultado sin usar la palabra clave <code>return</code>.</li>
+            <li><strong>Contexto Léxico:</strong> Se refiere a que las funciones de flecha determinan el valor de <code>this</code> basándose en el ámbito donde se definen, no donde se ejecutan.</li>
+            <li><strong>Método:</strong> Una función que es propiedad de un objeto.</li>
+            <li><strong>Callback:</strong> Una función que se pasa a otra función como argumento para ser ejecutada más tarde.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

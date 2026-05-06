@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¿Qué es una promesa en JS?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Qué es una promesa en JS?</h1>
+    <p>Checkpoint 8 - Asincronía y Gestión de Tareas</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>Introducción</h2>
+        <p>
+            En términos técnicos, una <strong>Promesa</strong> es un objeto que representa el éxito o el fracaso de una operación asíncrona. 
+        </p>
+        <p>
+            <strong>¿Para qué se utiliza?</strong><br>
+            Se utiliza para gestionar tareas que toman tiempo y que no se sabe exactamente cuándo terminarán. Por ejemplo:
+        </p>
+        <ul>
+            <li>Pedir datos a una base de datos.</li>
+            <li>Descargar una imagen de internet.</li>
+            <li>Leer un archivo muy pesado.</li>
+        </ul>
+        <p>
+            Sin las promesas, JavaScript se quedaría "congelado" esperando. Gracias a ellas, el motor de JS puede seguir con otras tareas mientras la operación se completa en segundo plano.
+        </p>
+    </section>
+
+    <section>
+        <h2>1. Los 3 estados de una Promesa</h2>
+
+        <!-- Recuadro para el diagrama -->
+        <div class="image-placeholder-box">
+            <img src="../images/promesa_1.png" alt="Esquema de Promesas en JS" onerror="this.style.display='none'">
+            <p style="color: #666; font-style: italic;">[Diagrama: Flujo de una promesa]</p>
+        </div>
+
+        <p>
+            Para entender una promesa, piensa en cuando pides comida en un restaurante:
+        </p>
+        <ul>
+            <li><strong>Pending (Pendiente):</strong> El pedido está hecho. La comida se está cocinando. Aún no se sabe el resultado final.</li>
+            <li><strong>Fulfilled (Resuelta / Cumplida):</strong> ¡Éxito! La comida llegó a la mesa. Ya puedes ejecutar el siguiente código.</li>
+            <li><strong>Rejected (Rechazada):</strong> Hubo un problema (no había stock). Hay que decidir cómo gestionar el error.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. Sintaxis y Ejemplo Práctico</h2>
+        
+        <h3>Cómo se crea una promesa</h3>
+        <pre><code>const miPedido = new Promise((resolve, reject) => {
+    const hayComida = true;
+
+    if (hayComida) {
+        resolve("¡Aquí tienes tu hamburguesa! 🍔");
+    } else {
+        reject("Lo siento, no quedan ingredientes. ❌");
+    }
+});</code></pre>
+
+        <h3>Cómo se consume (se usa) una promesa</h3>
+        <p>Utilizamos los métodos <code>.then()</code> para el éxito y <code>.catch()</code> para los errores.</p>
+        <pre><code>miPedido
+    .then((mensaje) => {
+        // Éxito (resolve)
+        console.log(mensaje);
+    })
+    .catch((error) => {
+        // Error (reject)
+        console.error(error);
+    })
+    .finally(() => {
+        // Se ejecuta SIEMPRE al final
+        console.log("Proceso terminado.");
+    });</code></pre>
+    </section>
+
+    <section>
+        <h2>3. ¿Por qué son mejores que los antiguos "Callbacks"?</h2>
+        <p>
+            Antes de las promesas, se usaban funciones llamadas "callbacks". Cuando había muchas tareas seguidas, el código se volvía una maraña ilegible llamada <strong>Callback Hell</strong> (El infierno de los callbacks).
+        </p>
+        <p>
+            Las promesas permiten encadenar tareas de forma vertical y limpia:
+        </p>
+        <pre><code>hacerPedido()
+    .then(comer)
+    .then(pagar)
+    .catch(reclamar);</code></pre>
+    </section>
+
+    <section class="warning-box">
+        <h3>⚠️ Riesgos y Errores Comunes</h3>
+        <p><strong>Olvidar el .catch():</strong> Si una promesa se rechaza y no tienes un <code>.catch()</code>, el programa puede lanzar una excepción no controlada.</p>
+        <p><strong>Promesas "eternas":</strong> Si olvidas llamar a <code>resolve</code> o <code>reject</code> dentro del ejecutor, la promesa se quedará en estado <em>Pending</em> para siempre, consumiendo memoria.</p>
+    </section>
+
+    <div class="glossary">
+        <h3>Diccionario de Términos (Glosario)</h3>
+        <ul>
+            <li><strong>Asincronía:</strong> Capacidad de un programa para iniciar una tarea y seguir con otras mientras espera que la primera termine.</li>
+            <li><strong>Objeto Promise:</strong> Un contenedor para un valor que puede estar disponible ahora, en el futuro o nunca.</li>
+            <li><strong>Callback Hell:</strong> Problema de legibilidad causado por múltiples funciones anidadas una dentro de otra.</li>
+            <li><strong>Resolve:</strong> Función que se llama cuando la tarea asíncrona termina con éxito.</li>
+            <li><strong>Reject:</strong> Función que se llama cuando ocurre un error en la tarea asíncrona.</li>
+            <li><strong>Settled:</strong> Estado de una promesa cuando ya no está pendiente (ya ha sido resuelta o rechazada).</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

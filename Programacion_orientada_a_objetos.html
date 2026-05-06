@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¿Qué es la programación orientada a objetos?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Qué es la programación orientada a objetos?</h1>
+    <p>Checkpoint 8 - Arquitectura de Software y Modelado</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>1. Los dos conceptos fundamentales: Clases y Objetos</h2>
+        
+        <!-- Recuadro para el diagrama -->
+        <div class="image-placeholder-box">
+            <img src="../images/poo_1.jpg" alt="Diagrama de Clases y Objetos" onerror="this.style.display='none'">
+            <p style="color: #666; font-style: italic;">[Programación orientada a objetos]</p>
+        </div>
+
+        <p>
+            Para un principiante, la mejor analogía es la de una fábrica de coches:
+        </p>
+        <ul>
+            <li><strong>La Clase (El Molde):</strong> Es el plano o diseño. No es un coche real, sino las instrucciones de cómo debe ser un coche (tiene 4 ruedas, un motor, un color).</li>
+            <li><strong>El Objeto (El Producto):</strong> Es el coche real que sale de la fábrica. Puedes crear un coche rojo, uno azul o uno deportivo usando el mismo molde.</li>
+        </ul>
+
+        <h3>Sintaxis en JavaScript</h3>
+        <pre><code>// Se define la Clase (El molde)
+class Coche {
+    constructor(marca, color) {
+        this.marca = marca; // Propiedad
+        this.color = color; // Propiedad
+    }
+
+    // Método (Acción que el objeto puede hacer)
+    arrancar() {
+        console.log("El " + this.marca + " está arrancando...");
+    }
+}
+
+// Se crean Objetos (Instancias)
+const miCoche = new Coche("Toyota", "Rojo");
+const cocheDeAlex = new Coche("Tesla", "Negro");
+
+miCoche.arrancar(); // "El Toyota está arrancando..."</code></pre>
+    </section>
+
+    <section>
+        <h2>2. Los 4 Pilares de la POO</h2>
+        <p>Para que un sistema sea verdaderamente orientado a objetos, debe cumplir estos cuatro principios:</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                <strong>A. Abstracción:</strong> Simplificar un objeto complejo quedándote solo con lo que importa (ej: usar el volante sin saber cómo funciona el motor).
+            </div>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                <strong>B. Encapsulamiento:</strong> "Esconder" los datos internos para proteger la integridad del objeto de cambios externos accidentales.
+            </div>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                <strong>C. Herencia:</strong> Crear clases nuevas basadas en otras ya existentes (ej: un <code>Coche</code> hereda de <code>Vehiculo</code>).
+            </div>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                <strong>D. Polimorfismo:</strong> Capacidad de que diferentes objetos respondan a la misma orden de formas distintas.
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. El Aparte Técnico: La Jerarquía (El "Es-Un")</h2>
+        <p>
+            La Jerarquía es la estructura que organiza el código de lo más general a lo más específico. En programación, esto se conoce como la relación <strong>"Es-Un" (Is-A)</strong>.
+        </p>
+        <p>Ejemplo: Un <code>Jedi</code> es un <code>UsuarioDeLaFuerza</code>; un <code>MaestroJedi</code> es un <code>Jedi</code>.</p>
+
+        <h3>Visualizando la Jerarquía en el Código (RPG)</h3>
+        <pre><code>// Lo más general (Superior)
+class Personaje {
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.vida = 100;
+    }
+}
+
+// Especialización (Intermedio)
+class Guerrero extends Personaje {
+    atacar() {
+        console.log(`${this.nombre} ataca con su espada.`);
+    }
+}
+
+// Específico (Base)
+class CaballeroDeLaMesaRedonda extends Guerrero {
+    usarEscudo() {
+        console.log(`${this.nombre} bloquea el ataque.`);
+    }
+}
+
+const arthur = new CaballeroDeLaMesaRedonda("Arturo");</code></pre>
+    </section>
+
+    <section class="warning-box">
+        <h3>💡 ¿Por qué es vital la Jerarquía?</h3>
+        <p><strong>Mantenimiento:</strong> Si añades una propiedad en la clase raíz (<code>Personaje</code>), toda la jerarquía la hereda automáticamente.</p>
+        <p><strong>Advertencia:</strong> No abuses de la jerarquía. Un árbol muy profundo puede volverse frágil. En 2026, la tendencia es favorecer jerarquías planas.</p>
+    </section>
+
+    <section>
+        <h2>4. Riesgos y Consideraciones</h2>
+        <ul>
+            <li><strong>Sobre-ingeniería:</strong> No crees clases para problemas extremadamente simples.</li>
+            <li><strong>Curva de aprendizaje:</strong> Requiere un cambio de mentalidad para entender cómo se comunican los objetos.</li>
+        </ul>
+    </section>
+
+    <div class="glossary">
+        <h3>Diccionario de Términos (Glosario)</h3>
+        <ul>
+            <li><strong>Clase:</strong> El plano o plantilla desde la cual se crean los objetos.</li>
+            <li><strong>Objeto:</strong> Una instancia única de una clase que contiene datos y funcionalidades.</li>
+            <li><strong>Instancia:</strong> El proceso de crear un objeto concreto a partir de una clase usando la palabra <code>new</code>.</li>
+            <li><strong>Método:</strong> Una función definida dentro de una clase que describe una acción que el objeto puede realizar.</li>
+            <li><strong>Herencia:</strong> Mecanismo por el cual una clase (hija) adquiere las propiedades y métodos de otra (padre).</li>
+            <li><strong>this:</strong> Palabra clave que hace referencia al objeto actual que está ejecutando el código.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

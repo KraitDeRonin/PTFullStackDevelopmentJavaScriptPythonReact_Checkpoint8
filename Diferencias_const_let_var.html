@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diferencias entre const, let y var</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa solicitada -->
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Cuáles son las diferencias entre const, let y var?</h1>
+    <p>Checkpoint 8 - Gestión de Variables y Scope</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>Evolución de las variables</h2>
+        <p>
+            Históricamente, solo existía <code>var</code>. Pero a medida que las aplicaciones se volvieron complejas, <code>var</code> empezó a causar "bugs" (errores) silenciosos. Por eso, en 2015 (ES6), se introdujeron <code>let</code> y <code>const</code> para darnos un control total sobre nuestro código.
+        </p>
+    </section>
+
+    <section>
+        <h2>1. El concepto clave: El "Scope" (Alcance)</h2>
+        <p>Es el "reino" donde una variable vive y es accesible:</p>
+        <ul>
+            <li><strong>Global Scope:</strong> Accesible desde cualquier lugar del script.</li>
+            <li><strong>Function Scope:</strong> Solo accesible dentro de la función donde se creó.</li>
+            <li><strong>Block Scope:</strong> Solo accesible dentro de un par de llaves <code>{ ... }</code> (como en un <code>if</code> o un <code>for</code>).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. Desglose de los tres tipos</h2>
+        
+        <h3>A. var (El veterano)</h3>
+        <p>Es la forma antigua. No respeta bloques y permite re-declaraciones, lo que puede causar desastres en proyectos grandes.</p>
+        <pre><code>if (true) {
+    var nombre = "Alex";
+}
+console.log(nombre); // Imprime "Alex" (¡A pesar de estar fuera del bloque!)</code></pre>
+
+        <h3>B. let (El estándar moderno)</h3>
+        <p>Es la evolución de <code>var</code>. Respeta el alcance de bloque y es ideal para valores que cambiarán, como contadores.</p>
+        <pre><code>let puntaje = 10;
+puntaje = 20; // Permitido
+// let puntaje = 30; // ERROR: No puedes re-declarar en el mismo bloque.</code></pre>
+
+        <h3>C. const (El guardián)</h3>
+        <p>Para valores que no deben cambiar. Hace que el código sea predecible y seguro.</p>
+        <pre><code>const PI = 3.1416;
+// PI = 4; // ERROR: JavaScript no permite re-asignar una constante.</code></pre>
+    </section>
+
+    <section>
+        <h2>3. Tabla Comparativa de Referencia Rápida</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>var</th>
+                    <th>let</th>
+                    <th>const</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Alcance (Scope)</strong></td>
+                    <td>Función</td>
+                    <td>Bloque {}</td>
+                    <td>Bloque {}</td>
+                </tr>
+                <tr>
+                    <td><strong>¿Reasignable?</strong></td>
+                    <td>SÍ</td>
+                    <td>SÍ</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td><strong>¿Redeclarable?</strong></td>
+                    <td>SÍ</td>
+                    <td>NO</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td><strong>Hoisting</strong></td>
+                    <td>SÍ (undefined)</td>
+                    <td>NO (error)</td>
+                    <td>NO (error)</td>
+                </tr>
+                <tr>
+                    <td><strong>Uso recomendado</strong></td>
+                    <td>Nunca</td>
+                    <td>Si el valor cambiará</td>
+                    <td>Por defecto siempre</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>4. El "Hoisting": El riesgo invisible</h2>
+        <p>
+            El <strong>Hoisting</strong> es un comportamiento donde JavaScript "mueve" las declaraciones al principio. Con <code>var</code>, puedes usar la variable antes de crearla y obtendrás <code>undefined</code>. Con <code>let</code> y <code>const</code>, el programa lanza un error, obligándote a escribir código más limpio y ordenado.
+        </p>
+    </section>
+
+    <div class="glossary">
+        <h3>Diccionario de Términos (Glosario)</h3>
+        <ul>
+            <li><strong>Scope:</strong> El contexto o alcance actual de ejecución en el que los valores y las expresiones son "visibles".</li>
+            <li><strong>Hoisting:</strong> Comportamiento de JS de elevar las declaraciones al inicio del contexto de ejecución.</li>
+            <li><strong>Inmutabilidad:</strong> La propiedad de un objeto o variable cuyo estado no puede ser modificado después de su creación.</li>
+            <li><strong>ES6 (ECMAScript 2015):</strong> La sexta edición del estándar ECMAScript que introdujo mejoras significativas a JavaScript.</li>
+            <li><strong>Temporal Dead Zone (TDZ):</strong> El período entre el inicio del bloque y la declaración de una variable con <code>let</code> o <code>const</code> donde no se puede acceder a ella.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

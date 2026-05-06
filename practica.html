@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejercicios Prácticos - Checkpoint 8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="../html/css/teoria.css">
+</head>
+<body>
+
+<header>
+    <h1>Ejercicios Prácticos</h1>
+    <p>Checkpoint 8 - Aplicación de Conceptos</p>
+</header>
+
+<div class="container">
+    <a href="checkpoint8_index.html" class="back-btn">← Volver al inicio</a>
+
+    <section>
+        <h2>Ejercicio 1: Bucle for</h2>
+        <p>
+            En este ejercicio, creamos un bucle <code>for</code> estándar para recorrer un arreglo de nombres e imprimirlos uno por uno en la consola.
+        </p>
+        <pre><code>const miLista = ["velma", "exploradora", "jane", "john", "harry"];
+
+for (let i = 0; i < miLista.length; i++) {
+  console.log(miLista[i]);
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>Ejercicio 2: Bucle while</h2>
+        <p>
+            Aquí resolvemos el mismo problema pero utilizando un bucle <code>while</code>. Es fundamental gestionar correctamente el contador para evitar bucles infinitos.
+        </p>
+        <pre><code>const miLista = ["velma", "exploradora", "jane", "john", "harry"];
+let contador = 0;
+
+while (contador < miLista.length) {
+  console.log(miLista[contador]);
+  contador++; 
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>Ejercicio 3: Función de Flecha</h2>
+        <p>
+            Creamos una <strong>Arrow Function</strong> minimalista de una sola línea aprovechando el retorno implícito de JavaScript.
+        </p>
+        <pre><code>const holaMundo = () => "Hola mundo";
+
+// Para probarla en consola:
+console.log(holaMundo());</code></pre>
+    </section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* --- VARIABLES DE DISEÑO --- */
+:root {
+    --js-yellow: #f7df1e;
+    --dark-bg: #1e1e1e;
+    --text-color: #333;
+    --light-gray: #f4f4f9;
+    --code-bg: #2d2d2d;
+    --code-inline-bg: #e9ecef;
+    --transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+header {
+    background-color: var(--dark-bg);
+    color: var(--js-yellow);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--js-yellow);
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3 {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: var(--dark-bg);
+    text-transform: uppercase;
+}
+
+h2 {
+    border-bottom: 2px solid var(--js-yellow);
+    display: inline-block;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* --- ESTILOS DE CÓDIGO (FIXED) --- */
+code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    background-color: var(--code-inline-bg);
+    color: #d63384; /* Color distintivo para código inline */
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: bold;
+}
+
+pre {
+    background-color: var(--code-bg);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border-left: 6px solid var(--js-yellow);
+    margin: 20px 0;
+}
+
+pre code {
+    background-color: transparent;
+    color: #f8f8f2;
+    padding: 0;
+    font-weight: normal;
+}
+
+/* --- ELEMENTOS DE UI --- */
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: var(--dark-bg);
+    font-weight: bold;
+    background: var(--js-yellow);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    filter: brightness(0.9);
+    transform: translateX(-5px);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--dark-bg);
+    color: var(--js-yellow);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.glossary {
+    margin-top: 60px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-top: 4px solid var(--js-yellow);
+    border-radius: 0 0 12px 12px;
+}
+
+/* --- CONTENEDOR DE IMAGEN --- */
+.image-placeholder-box {
+    margin-top: 40px;
+    padding: 15px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    text-align: center;
+    background: #fff;
+}
+
+.image-placeholder-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
